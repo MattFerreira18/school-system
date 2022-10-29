@@ -1,0 +1,2 @@
+def withoutSymbols(string):
+    return ''
