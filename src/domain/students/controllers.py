@@ -1,26 +1,14 @@
 def create(use_case):
-    def execute():
-        print('printed')
-
-    return execute
+    print('printed')
 
 
 def find(use_case):
-    def execute(id):
-        print('printed')
-
-    return execute
+    print('printed')
 
 
 def getAll(use_case):
-    def execute():
-        print('printed')
-
-    return execute
+    print('printed')
 
 
 def delete(use_case):
-    def execute(id):
-        print('printed')
-
-    return execute
+    print('printed')
