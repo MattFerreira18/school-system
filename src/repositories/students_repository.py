@@ -16,6 +16,17 @@ def findById(id):
     return result
 
 
+def findByRa(ra):
+    result = None
+
+    for student in REPOSITORY:
+        if (student.ra == ra):
+            result = student
+            break
+
+    return result
+
+
 def findByCpf(cpf):
     result = None
 

@@ -27,7 +27,7 @@ def create(use_case):
 
 
 def find(use_case):
-    print('Qual é o identificador do aluno?\n')
+    print('Qual é o RA do aluno?\n')
     id = input()
 
     result = use_case(id)

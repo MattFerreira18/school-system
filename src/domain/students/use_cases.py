@@ -1,6 +1,6 @@
 from presentations.student_presentation import student_presentation
 from entities.student import Student
-from utils.string import isIdValid, isCpfValid
+from utils.string import isIdValid, isCpfValid, isRaValid
 
 
 def create(students_repository, courses_repository):
@@ -33,11 +33,11 @@ def create(students_repository, courses_repository):
 
 
 def find(students_repository):
-    def execute(id):
-        if (not (isIdValid(id))):
-            return 'student id invalid'
+    def execute(ra):
+        if (not (isRaValid(ra))):
+            return 'student RA invalid'
 
-        student = students_repository.findById(id)
+        student = students_repository.findByRa(ra)
 
         if (not (student)):
             return None
