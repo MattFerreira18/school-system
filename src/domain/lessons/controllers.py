@@ -1,4 +1,4 @@
-import use_cases.courses as use_cases
+import use_cases
 
 
 def create():
