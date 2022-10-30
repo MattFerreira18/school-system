@@ -1,3 +1,4 @@
+from presentations.student_presentation import student_presentation
 from entities.student import Student
 from utils.string import isIdValid, isCpfValid
 
@@ -28,7 +29,10 @@ def find(students_repository):
 
         student = students_repository.findById(id)
 
-        return student
+        if (not (student)):
+            return None
+
+        return student_presentation(student)
 
     return execute
 
@@ -37,7 +41,7 @@ def getAll(students_repository):
     def execute():
         students = students_repository.findAll()
 
-        return students
+        return map(student_presentation, students)
 
     return execute
 

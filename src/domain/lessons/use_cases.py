@@ -1,3 +1,4 @@
+from presentations.lesson_presentation import lesson_presentation
 from entities.lesson import Lesson
 from utils.string import isIdValid
 
@@ -24,7 +25,10 @@ def find(lessons_repository):
 
         lesson = lessons_repository.findById(id)
 
-        return lesson
+        if (not (lesson)):
+            return None
+
+        return lesson_presentation(lesson)
 
     return execute
 
@@ -33,7 +37,7 @@ def getAll(lessons_repository):
     def execute():
         lessons = lessons_repository.findAll()
 
-        return lessons
+        return map(lesson_presentation, lessons)
 
     return execute
 

@@ -1,4 +1,5 @@
 from entities.course import Course
+from presentations.course_presentation import course_presentation
 from utils.string import isIdValid
 
 
@@ -24,7 +25,10 @@ def find(courses_repository):
 
         course = courses_repository.findById(id)
 
-        return course
+        if (not (course)):
+            return None
+
+        return course_presentation(course)
 
     return execute
 
@@ -33,7 +37,7 @@ def getAll(courses_repository):
     def execute():
         courses = courses_repository.findAll()
 
-        return courses
+        return map(course_presentation, courses)
 
     return execute
 
