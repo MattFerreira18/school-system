@@ -3,7 +3,7 @@ from entities.student import Student
 from utils.string import isIdValid, isCpfValid
 
 
-def create(students_repository):
+def create(students_repository, courses_repository):
     def execute(name, cpf, course_id):
 
         if (len(name) < 4):
@@ -14,6 +14,16 @@ def create(students_repository):
 
         if (not (isIdValid(course_id))):
             return 'course id invalid'
+
+        cpf_already_exists = students_repository.findByCpf(cpf)
+
+        if (cpf_already_exists):
+            return 'cpf already registered'
+
+        course_exists = courses_repository.findById(course_id)
+
+        if (not (course_exists)):
+            return 'couse not found'
 
         student = Student(name, cpf, course_id)
 

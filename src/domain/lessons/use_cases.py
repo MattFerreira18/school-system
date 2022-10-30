@@ -3,13 +3,18 @@ from entities.lesson import Lesson
 from utils.string import isIdValid
 
 
-def create(lessons_repository):
+def create(lessons_repository, courses_repository):
     def execute(name, course_id):
         if (len(name) < 4):
             return 'invalid name length'
 
         if (not (isIdValid(course_id))):
             return 'course id invalid'
+
+        course_exists = courses_repository.findById(course_id)
+
+        if (not (course_exists)):
+            return 'couse not found'
 
         lesson = Lesson(name, course_id=course_id)
 

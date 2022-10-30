@@ -1,10 +1,10 @@
 import controllers
 import use_cases
-from repositories import students_repository
+from repositories import students_repository, courses_repository
 
 
 def create():
-    return controllers.create(use_case=use_cases.create(students_repository))
+    return controllers.create(use_case=use_cases.create(students_repository, courses_repository))
 
 
 def find():
