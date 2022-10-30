@@ -1,18 +1,35 @@
-def create():
-    print('created')
+REPOSITORY = []
+
+
+def create(data):
+    REPOSITORY.append(data)
 
 
 def findById(id):
-    print('student')
+    result = None
+
+    for student in REPOSITORY:
+        if (student.id == id):
+            result = student
+            break
+
+    return result
 
 
 def findAll():
-    print('all students')
+    return REPOSITORY
 
 
-def updateById(id):
-    print('student')
+def updateById(id, data):
+    student = None
+
+    for i in range(len(REPOSITORY)):
+        if (REPOSITORY[i].id == id):
+            student[i] = data
+            break
 
 
 def delById(id):
-    print('student')
+    filtered = filter(lambda student: student.id != id, REPOSITORY)
+
+    REPOSITORY = filtered
