@@ -1,25 +1,25 @@
-def create(students_repository):
+def create(use_case):
     def execute():
         print('printed')
 
     return execute
 
 
-def find(students_repository):
+def find(use_case):
     def execute(id):
         print('printed')
 
     return execute
 
 
-def getAll(students_repository):
+def getAll(use_case):
     def execute():
         print('printed')
 
     return execute
 
 
-def delete(students_repository):
+def delete(use_case):
     def execute(id):
         print('printed')
 

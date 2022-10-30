@@ -1,14 +1,26 @@
-def create():
-    print('printed')
+def create(courses_repository):
+    def execute():
+        print('printed')
+
+    return execute
 
 
-def find(id):
-    print('printed')
+def find(id, courses_repository):
+    def execute(id):
+        print('printed')
+
+    return execute
 
 
-def getAll():
-    print('printed')
+def getAll(courses_repository):
+    def execute():
+        print('printed')
+
+    return execute
 
 
-def delete(id):
-    print('printed')
+def delete(courses_repository):
+    def execute(id):
+        print('printed')
+
+    return execute
