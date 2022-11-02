@@ -4,10 +4,7 @@ from utils import os
 from domain.courses import factory as courses_factory
 from domain.lessons import factory as lessons_factory
 from domain.students import factory as students_factory
-
-ENTITIES = ['Alunos', 'Cursos', 'Aulas']
-CRUD_ACTIONS = ['criar', 'listar todos',
-                'listar somente um', 'atualizar', 'remover']
+from constants import CRUD_ACTIONS, ENTITIES
 
 
 def showLoadingInterface():
@@ -76,7 +73,7 @@ def loadCrudActionsInterface():
     print('\n')
     selected_action = int(input())
 
-    if (selected_action < 1 or selected_action > len(ENTITIES)):
+    if (selected_action < 1 or selected_action > len(CRUD_ACTIONS)):
         print('Você digitou uma opção inexistente, tente novamente:')
         return loadCrudActionsInterface()
 

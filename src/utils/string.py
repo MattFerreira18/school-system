@@ -11,6 +11,7 @@ def genRa():
     return f'{choice(string.ascii_letters)}{choice(string.ascii_letters)}{randint(10_000, 99_999)}'
 
 
+# TODO move to validate
 def isIdValid(string):
     try:
         uuid.UUID(str(string))
@@ -19,10 +20,12 @@ def isIdValid(string):
         return False
 
 
+# TODO move to validate
 def isRaValid(ra):
     return len(ra) == 7
 
 
+# TODO move to validate
 def isCpfValid(string):
     def getSumOfMultiplied(multiplied):
         result = 0
