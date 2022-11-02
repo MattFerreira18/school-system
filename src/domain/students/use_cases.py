@@ -25,7 +25,7 @@ def create(students_repository, courses_repository):
         if (not (course_exists)):
             return 'couse not found'
 
-        student = Student(name, cpf, course_id)
+        student = Student(name=name, cpf=cpf, course_id=course_id)
 
         students_repository.create(student)
 

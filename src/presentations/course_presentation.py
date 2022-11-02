@@ -1,3 +1,3 @@
 # # TODO
-def course_presentation():
-    print('presentation')
+def course_presentation(course):
+    print(course)

@@ -5,13 +5,13 @@ from utils.validate import isIdValid
 
 def create(courses_repository):
     def execute(name, duration):
-        if (not (duration.is_numeric())):
+        if (not (duration.isnumeric())):
             return 'invalid duration value type'
 
         if (len(name) < 4):
             return 'invalid name length'
 
-        course = Course(name, duration=int(duration))
+        course = Course(id=None, name=name, duration=int(duration))
 
         courses_repository.create(course)
 

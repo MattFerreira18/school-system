@@ -16,7 +16,7 @@ def create(lessons_repository, courses_repository):
         if (not (course_exists)):
             return 'couse not found'
 
-        lesson = Lesson(name, course_id=course_id)
+        lesson = Lesson(name=name, course_id=course_id)
 
         lessons_repository.create(lesson)
 

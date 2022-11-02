@@ -48,14 +48,14 @@ def getSelectedEntityFactory(selected_entity):
             return lessons_factory
 
 
-def callSelectedEntityAction(selected_factory, selected_action):
+def callSelectedEntityAction(selected_action, selected_factory):
     match(selected_action):
         case 0:
             return selected_factory.create()
         case 1:
-            return selected_factory.find()
-        case 2:
             return selected_factory.getAll()
+        case 2:
+            return selected_factory.find()
         case 3:
             return selected_factory.update()
         case 4:
@@ -67,10 +67,14 @@ def loadCrudActionsInterface():
     print('\nSelecione uma das ações: \n\n')
 
     for i, action in enumerate(CRUD_ACTIONS):
-        print(f'{i + 1} - {action}')
-
+        print(f'{i + 1}  - {action}')
+    print('10 - voltar')
     print('\n')
     selected_action = int(input())
+
+    if (selected_action == 10):
+        os.clear()
+        return main()
 
     if (selected_action < 1 or selected_action > len(CRUD_ACTIONS)):
         print('Você digitou uma opção inexistente, tente novamente:')
@@ -84,10 +88,20 @@ def loadCrudActionsInterface():
 
 def main():
     showLoadingInterface()
-    selected_entity = loadEntitiesInterface()
-    selected_action = loadCrudActionsInterface()
-    selected_factory = getSelectedEntityFactory(selected_entity)
-    callSelectedEntityAction(selected_action, selected_factory)
+
+    control = None
+    next_step = True
+
+    while control != 10:
+        if next_step:
+            selected_entity = loadEntitiesInterface()
+
+        selected_action = loadCrudActionsInterface()
+        selected_factory = getSelectedEntityFactory(selected_entity)
+
+        # when entity action call returns True: success then call `loadEntitiesInterface`
+        # when entity action call returns False: fail then call `loadCrudActionsInterface`
+        next_step = callSelectedEntityAction(selected_action, selected_factory)
 
 
 main()

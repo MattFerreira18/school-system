@@ -3,22 +3,19 @@ from utils.string import genId
 
 class Lesson:
     def __init__(self, id, name, course_id) -> None:
-        if (not (id)):
-            id = genId()
-
-        self.id = id
-        self.name = name
-        self.course_id = course_id
+        self._id = id or genId()
+        self._name = name
+        self._course_id = course_id
         pass
 
     @property
     def id(self):
-        return self.id
+        return self._id
 
     @property
     def name(self):
-        return self.name
+        return self._name
 
     @property
     def course_id(self):
-        return self.course_id
+        return self._course_id

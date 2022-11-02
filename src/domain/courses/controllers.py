@@ -56,7 +56,6 @@ def find(use_case):
 
 def getAll(use_case):
     result = use_case()
-
     for course in result:
         print(f'Identificador: {course.id}')
         print(f'Curso de {course.name}')
