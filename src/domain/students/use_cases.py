@@ -1,6 +1,6 @@
 from presentations.student_presentation import student_presentation
 from entities.student import Student
-from utils.string import isIdValid, isCpfValid, isRaValid
+from utils.validate import isCpfValid, isRaValid, isIdValid
 
 
 def create(students_repository, courses_repository):

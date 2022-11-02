@@ -1,6 +1,6 @@
 from presentations.lesson_presentation import lesson_presentation
 from entities.lesson import Lesson
-from utils.string import isIdValid
+from utils.validate import isIdValid
 
 
 def create(lessons_repository, courses_repository):
