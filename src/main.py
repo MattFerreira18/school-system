@@ -1,6 +1,5 @@
-import time
-import random
 from utils import os
+from utils.string import sleep, printDivider
 from domain.courses import factory as courses_factory
 from domain.lessons import factory as lessons_factory
 from domain.students import factory as students_factory
@@ -8,19 +7,19 @@ from constants import CRUD_ACTIONS, ENTITIES
 
 
 def showLoadingInterface():
-    print('=' * 28)
+    printDivider()
     print('\n\n')
     print('Iniciando Sistema Escolar')
     print('         aguarde...')
     print('\n\n')
-    print('=' * 28)
+    printDivider()
 
-    time.sleep(random.randint(1, 5))
+    sleep()
     os.clear()
 
 
 def loadEntitiesInterface():
-    print('=' * 28)
+    printDivider()
     print('\nSelecione uma entidade: \n\n')
 
     for i, entity in enumerate(ENTITIES):
@@ -33,7 +32,7 @@ def loadEntitiesInterface():
         print('Você digitou uma opção inexistente, tente novamente:')
         return loadEntitiesInterface()
 
-    print('=' * 28)
+    printDivider()
     os.clear()
 
     return selected_entity - 1
@@ -64,7 +63,7 @@ def callSelectedEntityAction(selected_factory, selected_action):
 
 
 def loadCrudActionsInterface():
-    print('=' * 28)
+    printDivider()
     print('\nSelecione uma das ações: \n\n')
 
     for i, action in enumerate(CRUD_ACTIONS):
@@ -77,7 +76,7 @@ def loadCrudActionsInterface():
         print('Você digitou uma opção inexistente, tente novamente:')
         return loadCrudActionsInterface()
 
-    print('=' * 28)
+    printDivider()
     os.clear()
 
     return selected_action - 1

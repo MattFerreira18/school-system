@@ -1,3 +1,6 @@
+from utils.string import printDivider
+
+
 def create(use_case):
     print('Qual é o nome do aluno?\n')
     name = input()
@@ -45,11 +48,11 @@ def find(use_case):
 
         return False
 
-    print('=' * 20)
+    printDivider()
     print(f'aluno: {result.name}')
     print(f'possui o CPF: {result.cpf}')
     print(f'faz parte do curso: {result.course_id}')
-    print('=' * 20)
+    printDivider()
 
     return True
 
@@ -58,7 +61,7 @@ def getAll(use_case):
     result = use_case()
 
     for student in result:
-        print('=' * 20)
+        printDivider()
         print(f'Identificador: {student.id}')
         print(f'aluno: {student.name}')
         print(f'possui o CPF: {student.cpf}')
