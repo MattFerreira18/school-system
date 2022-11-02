@@ -1,5 +1,5 @@
-import controllers
-import use_cases
+import domain.lessons.controllers as controllers
+import domain.lessons.use_cases as use_cases
 from repositories import lessons_repository, courses_repository
 
 
