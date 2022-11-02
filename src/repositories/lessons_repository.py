@@ -29,6 +29,15 @@ def updateById(id, data):
             break
 
 
+def updateById(id, data):
+    lesson = None
+
+    for i in range(len(REPOSITORY)):
+        if (REPOSITORY[i].id == id):
+            lesson[i] = data
+            break
+
+
 def delById(id):
     filtered = filter(lambda lesson: lesson.id != id, REPOSITORY)
 

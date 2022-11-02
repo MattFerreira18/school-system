@@ -26,7 +26,7 @@ def find(courses_repository):
         course = courses_repository.findById(id)
 
         if (not (course)):
-            return None
+            return 'couse not found'
 
         return course_presentation(course)
 
@@ -40,6 +40,26 @@ def getAll(courses_repository):
         return map(course_presentation, courses)
 
     return execute
+
+
+def edit(courses_repository):
+    def execute(id, name, duration):
+        if (not (isIdValid(id))):
+            return 'course id invalid'
+
+        course = courses_repository.findById(id)
+
+        if (not (course)):
+            return 'course not found'
+
+        if (len(name) < 4):
+            return 'invalid name length'
+
+        course = Course(id=course.id, name=name, duration=int(duration))
+
+        courses_repository.updateById(id, course)
+
+    return execute()
 
 
 def delete(courses_repository):

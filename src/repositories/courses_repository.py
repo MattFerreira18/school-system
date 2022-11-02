@@ -29,6 +29,15 @@ def updateById(id, data):
             break
 
 
+def updateById(id, data):
+    course = None
+
+    for i in range(len(REPOSITORY)):
+        if (REPOSITORY[i].id == id):
+            course[i] = data
+            break
+
+
 def delById(id):
     filtered = filter(lambda course: course.id != id, REPOSITORY)
 

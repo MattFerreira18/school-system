@@ -47,6 +47,34 @@ def getAll(lessons_repository):
     return execute
 
 
+def edit(lessons_repository, courses_repository):
+    def execute(id, name, course_id):
+        if (not (isIdValid(id))):
+            return 'lesson id invalid'
+
+        lesson = lessons_repository.findById(id)
+
+        if (not (lesson)):
+            return 'lesson not found'
+
+        if (len(name) < 4):
+            return 'invalid name length'
+
+        if (not (isIdValid(course_id))):
+            return 'course id invalid'
+
+        course_exists = courses_repository.findById(course_id)
+
+        if (not (course_exists)):
+            return 'couse not found'
+
+        lesson = Lesson(id=lesson.id, name=name, course_id=course_id)
+
+        lessons_repository.updateById(id, lesson)
+
+    return execute()
+
+
 def delete(lessons_repository):
     def execute(id):
         if (not (isIdValid(id))):

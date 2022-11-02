@@ -63,6 +63,34 @@ def getAll(use_case):
     return True
 
 
+def update(use_case):
+    print('Qual é o identificador do curso?\n')
+    id = input()
+    print('Qual é o nome do curso?\n')
+    name = input()
+    print('Qual é a duração do curso?\n')
+    duration = input()
+
+    result = use_case(id, name, duration)
+
+    if (isinstance(result, str)):
+        print('Você digitou alguma informação inválida, tente novamente.')
+        print(f'mensagem de erro: {result}')
+        print('Digite:')
+        print('1 - tentar novamente')
+        print('0 - voltar para o menu anterior')
+        option = int(input())
+
+        if (option):
+            return create(use_case)
+
+        return False
+
+    print('Aula atualizada com sucesso!\n\n')
+
+    return True
+
+
 def delete(use_case):
     print('Qual é o identificador do curso?\n')
     id = input()

@@ -28,9 +28,9 @@ def create(use_case):
 
 def find(use_case):
     print('Qual é o RA do aluno?\n')
-    id = input()
+    ra = input()
 
-    result = use_case(id)
+    result = use_case(ra)
 
     if (isinstance(result, str)):
         print('Você digitou alguma informação inválida, tente novamente.')
@@ -63,6 +63,36 @@ def getAll(use_case):
         print(f'aluno: {student.name}')
         print(f'possui o CPF: {student.cpf}')
         print(f'faz parte do curso: {student.course_id}')
+
+    return True
+
+
+def update(use_case):
+    print('Qual é o RA do aluno?\n')
+    ra = input()
+    print('Qual é o nome do aluno?\n')
+    name = input()
+    print('Qual é o CPF do aluno?\n')
+    cpf = input()
+    print('Esse aluno faz parte de qual curso?\n')
+    course_id = input()
+
+    result = use_case(ra, name, cpf, course_id)
+
+    if (isinstance(result, str)):
+        print('Você digitou alguma informação inválida, tente novamente.')
+        print(f'mensagem de erro: {result}')
+        print('Digite:')
+        print('1 - tentar novamente')
+        print('0 - voltar para o menu anterior')
+        option = int(input())
+
+        if (option):
+            return create(use_case)
+
+        return False
+
+    print('Aluno atualizado com sucesso!\n\n')
 
     return True
 
