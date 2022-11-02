@@ -16,7 +16,7 @@ def getAll():
 
 
 def update():
-    return controllers.update(use_case=use_cases.updateById(lessons_repository, courses_repository))
+    return controllers.update(use_case=use_cases.edit(lessons_repository, courses_repository))
 
 
 def delete():

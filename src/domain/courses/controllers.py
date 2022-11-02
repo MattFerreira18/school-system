@@ -47,7 +47,7 @@ def find(use_case):
         return False
 
     printDivider()
-    print(f'Curso de {result.name}')
+    print(f'Curso de: {result.name}')
     print(f'duração: {result.duration}')
     printDivider()
 
@@ -58,7 +58,7 @@ def getAll(use_case):
     result = use_case()
     for course in result:
         print(f'Identificador: {course.id}')
-        print(f'Curso de {course.name}')
+        print(f'Curso de: {course.name}')
         print(f'duração: {course.duration}')
         printDivider()
 
@@ -84,11 +84,11 @@ def update(use_case):
         option = int(input())
 
         if (option):
-            return create(use_case)
+            return update(use_case)
 
         return False
 
-    print('Aula atualizada com sucesso!\n\n')
+    print('Curso atualizado com sucesso!\n\n')
 
     return True
 
@@ -97,7 +97,7 @@ def delete(use_case):
     print('Qual é o identificador do curso?\n')
     id = input()
 
-    print(f'Você digitou o identificador: {id}')
+    print(f'Você digitou o identificador: {id}\n')
     print(f'Esta informação está correta? Lembrando que uma vez feita a remoção, você não poderá voltar atrás')
     option = int(input())
 

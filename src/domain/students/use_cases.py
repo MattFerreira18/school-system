@@ -89,7 +89,7 @@ def edit(students_repository, courses_repository):
 
         students_repository.updateById(id, student)
 
-    return execute()
+    return execute
 
 
 def delete(students_repository):

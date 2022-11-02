@@ -72,7 +72,7 @@ def edit(lessons_repository, courses_repository):
 
         lessons_repository.updateById(id, lesson)
 
-    return execute()
+    return execute
 
 
 def delete(lessons_repository):

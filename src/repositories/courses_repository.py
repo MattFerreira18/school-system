@@ -1,14 +1,14 @@
-REPOSITORY = []
+repository = []
 
 
 def create(data):
-    REPOSITORY.append(data)
+    repository.append(data)
 
 
 def findById(id):
     result = None
 
-    for course in REPOSITORY:
+    for course in repository:
         if (course.id == id):
             result = course
             break
@@ -16,29 +16,33 @@ def findById(id):
     return result
 
 
+def findByName(name):
+    result = None
+
+    for course in repository:
+        if (course.name == name):
+            result = course
+            break
+
+    return result
+
+
 def findAll():
-    return REPOSITORY
+    return repository
 
 
 def updateById(id, data):
-    course = None
+    global repository
 
-    for i in range(len(REPOSITORY)):
-        if (REPOSITORY[i].id == id):
-            course[i] = data
-            break
+    filtered = list(filter(lambda course: course.id != id, repository))
+    filtered.append(data)
 
-
-def updateById(id, data):
-    course = None
-
-    for i in range(len(REPOSITORY)):
-        if (REPOSITORY[i].id == id):
-            course[i] = data
-            break
+    repository = filtered
 
 
 def delById(id):
-    filtered = filter(lambda course: course.id != id, REPOSITORY)
+    global repository
 
-    REPOSITORY = filtered
+    filtered = filter(lambda course: course.id != id, repository)
+
+    repository = filtered

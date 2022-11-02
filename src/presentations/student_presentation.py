@@ -1,3 +1,2 @@
-# # TODO
-def student_presentation():
-    print('presentation')
+def student_presentation(student):
+    return student

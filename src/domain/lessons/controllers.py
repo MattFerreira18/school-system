@@ -98,7 +98,7 @@ def delete(use_case):
     print('Qual é o identificador do aula?\n')
     id = input()
 
-    print(f'Você digitou o identificador: {id}')
+    print(f'Você digitou o identificador: {id}\n')
     print(f'Esta informação está correta? Lembrando que uma vez feita a remoção, você não poderá voltar atrás')
     option = int(input())
 

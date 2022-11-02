@@ -1,3 +1,2 @@
-# # TODO
-def lesson_presentation():
-    print('presentation')
+def lesson_presentation(lesson):
+    return lesson

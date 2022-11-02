@@ -5,7 +5,7 @@ from random import randint, choice
 
 
 def genId():
-    return uuid4()
+    return str(uuid4())
 
 
 def genRa():

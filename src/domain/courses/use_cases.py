@@ -11,6 +11,11 @@ def create(courses_repository):
         if (len(name) < 4):
             return 'invalid name length'
 
+        course_already_exists = courses_repository.findByName(name)
+
+        if (course_already_exists):
+            return 'course name already exists'
+
         course = Course(id=None, name=name, duration=int(duration))
 
         courses_repository.create(course)
@@ -26,7 +31,7 @@ def find(courses_repository):
         course = courses_repository.findById(id)
 
         if (not (course)):
-            return 'couse not found'
+            return 'course not found'
 
         return course_presentation(course)
 
@@ -59,7 +64,7 @@ def edit(courses_repository):
 
         courses_repository.updateById(id, course)
 
-    return execute()
+    return execute
 
 
 def delete(courses_repository):

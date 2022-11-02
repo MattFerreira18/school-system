@@ -1,3 +1,2 @@
-# # TODO
 def course_presentation(course):
-    print(course)
+    return course
