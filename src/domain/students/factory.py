@@ -1,6 +1,6 @@
 import domain.students.controllers as controllers
 import domain.students.use_cases as use_cases
-from repositories import students_repository, courses_repository
+from repositories import students_repository, courses_repository, lessons_repository
 
 
 def create():
@@ -8,7 +8,7 @@ def create():
 
 
 def find():
-    return controllers.find(use_case=use_cases.find(students_repository))
+    return controllers.find(use_case=use_cases.find(students_repository, courses_repository, lessons_repository))
 
 
 def getAll():

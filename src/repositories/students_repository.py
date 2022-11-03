@@ -42,10 +42,10 @@ def findAll():
     return repository
 
 
-def updateById(id, data):
+def updateByRa(ra, data):
     global repository
 
-    filtered = list(filter(lambda student: student.id != id, repository))
+    filtered = list(filter(lambda student: student.ra != ra, repository))
     filtered.append(data)
 
     repository = filtered

@@ -48,10 +48,22 @@ def find(use_case):
 
         return False
 
+    student = result['student']
+    course = result['course']
+    lessons = result['lessons']
+
     printDivider()
-    print(f'aluno: {result.name}')
-    print(f'possui o CPF: {result.cpf}')
-    print(f'faz parte do curso: {result.course_id}')
+    print(f'aluno: {student.name}')
+    print(f'possui o CPF: {student.cpf}')
+    print(f'possui o RA: {student.ra}')
+    print(f'faz parte do curso: {course.name}')
+    print(f'duração: {course.duration}')
+    print('possui as aulas:')
+
+    for lesson in lessons:
+        print(f'Identificador: {lesson.id}')
+        print(f'aula de {lesson.name}')
+        printDivider()
     printDivider()
 
     return True
@@ -65,6 +77,7 @@ def getAll(use_case):
         print(f'Identificador: {student.id}')
         print(f'aluno: {student.name}')
         print(f'possui o CPF: {student.cpf}')
+        print(f'possui o RA: {student.ra}')
         print(f'faz parte do curso: {student.course_id}')
 
     return True
@@ -91,7 +104,7 @@ def update(use_case):
         option = int(input())
 
         if (option):
-            return create(use_case)
+            return update(use_case)
 
         return False
 
@@ -101,7 +114,7 @@ def update(use_case):
 
 
 def delete(use_case):
-    print('Qual é o identificador do aula?\n')
+    print('Qual é o identificador do estudante?\n')
     id = input()
 
     print(f'Você digitou o identificador: {id}\n')
@@ -109,7 +122,7 @@ def delete(use_case):
     option = int(input())
 
     if (not (option)):
-        print('Parece que você digitou o identificador do aula errado.')
+        print('Parece que você digitou o identificador do estudante errado.')
         print('Digite:')
         print('1 - tentar novamente')
         print('0 - voltar para o menu anterior')

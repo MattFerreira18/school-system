@@ -85,7 +85,7 @@ def update(use_case):
         option = int(input())
 
         if (option):
-            return create(use_case)
+            return update(use_case)
 
         return False
 
@@ -95,7 +95,7 @@ def update(use_case):
 
 
 def delete(use_case):
-    print('Qual é o identificador do aula?\n')
+    print('Qual é o identificador da aula?\n')
     id = input()
 
     print(f'Você digitou o identificador: {id}\n')
@@ -103,7 +103,7 @@ def delete(use_case):
     option = int(input())
 
     if (not (option)):
-        print('Parece que você digitou o identificador do aula errado.')
+        print('Parece que você digitou o identificador da aula errado.')
         print('Digite:')
         print('1 - tentar novamente')
         print('0 - voltar para o menu anterior')

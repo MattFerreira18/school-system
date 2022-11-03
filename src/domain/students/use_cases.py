@@ -1,4 +1,6 @@
 from presentations.student_presentation import student_presentation
+from presentations.course_presentation import course_presentation
+from presentations.lesson_presentation import lesson_presentation
 from entities.student import Student
 from utils.validate import isCpfValid, isRaValid, isIdValid
 
@@ -33,7 +35,7 @@ def create(students_repository, courses_repository):
     return execute
 
 
-def find(students_repository):
+def find(students_repository, courses_repository, lessons_repository):
     def execute(ra):
         if (not (isRaValid(ra))):
             return 'student RA invalid'
@@ -43,7 +45,10 @@ def find(students_repository):
         if (not (student)):
             return 'student not found'
 
-        return student_presentation(student)
+        course = courses_repository.findById(student.course_id)
+        lessons = lessons_repository.findAllByCourseId(course.id)
+
+        return {'student': student_presentation(student), 'course': course_presentation(course), 'lessons': map(lesson_presentation, lessons)}
 
     return execute
 
@@ -86,10 +91,10 @@ def edit(students_repository, courses_repository):
         if (cpf_already_exists and cpf_already_exists.id != student.id):
             return 'cpf already registered'
 
-        student = Student(id=student.id, name=name,
+        student = Student(id=student.id, name=name, cpf=cpf,
                           ra=student.ra, course_id=course_id)
 
-        students_repository.updateById(id, student)
+        students_repository.updateByRa(ra, student)
 
     return execute
 
