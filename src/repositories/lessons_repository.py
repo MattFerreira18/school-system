@@ -16,6 +16,10 @@ def findById(id):
     return result
 
 
+def findAllByCourseId(course_id):
+    return list(filter(lambda lesson: lesson.course_id == course_id, repository))
+
+
 def findAll():
     return repository
 
@@ -41,6 +45,6 @@ def updateById(id, data):
 def delById(id):
     global repository
 
-    filtered = filter(lambda lesson: lesson.id != id, repository)
+    filtered = list(filter(lambda lesson: lesson.id != id, repository))
 
     repository = filtered

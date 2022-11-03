@@ -47,8 +47,16 @@ def find(use_case):
         return False
 
     printDivider()
-    print(f'Curso de: {result.name}')
-    print(f'duração: {result.duration}')
+
+    course = result['course']
+
+    print(f'Curso de: {course.name}')
+    print(f'duração: {course.duration}')
+    print('possui as aulas:')
+    for lesson in result['lessons']:
+        print(f'Identificador: {lesson.id}')
+        print(f'aula de {lesson.name}')
+        printDivider()
     printDivider()
 
     return True
@@ -56,10 +64,18 @@ def find(use_case):
 
 def getAll(use_case):
     result = use_case()
-    for course in result:
+    for item in result:
+        course = item['course']
+        lessons = item['lessons']
+
         print(f'Identificador: {course.id}')
         print(f'Curso de: {course.name}')
         print(f'duração: {course.duration}')
+        print('possui as aulas:')
+        for lesson in lessons:
+            print(f'Identificador: {lesson.id}')
+            print(f'aula de {lesson.name}')
+            printDivider()
         printDivider()
 
     return True

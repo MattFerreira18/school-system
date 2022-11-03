@@ -43,6 +43,6 @@ def updateById(id, data):
 def delById(id):
     global repository
 
-    filtered = filter(lambda course: course.id != id, repository)
+    filtered = list(filter(lambda course: course.id != id, repository))
 
     repository = filtered

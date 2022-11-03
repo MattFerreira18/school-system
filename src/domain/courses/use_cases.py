@@ -1,5 +1,6 @@
 from entities.course import Course
 from presentations.course_presentation import course_presentation
+from presentations.lesson_presentation import lesson_presentation
 from utils.validate import isIdValid
 
 
@@ -23,7 +24,7 @@ def create(courses_repository):
     return execute
 
 
-def find(courses_repository):
+def find(courses_repository, lessons_repository):
     def execute(id):
         if (not (isIdValid(id))):
             return 'course id invalid'
@@ -33,16 +34,25 @@ def find(courses_repository):
         if (not (course)):
             return 'course not found'
 
-        return course_presentation(course)
+        lessons = lessons_repository.findAllByCourseId(course.id)
+
+        return {'course': course_presentation(course), 'lessons': map(lesson_presentation, lessons)}
 
     return execute
 
 
-def getAll(courses_repository):
+def getAll(courses_repository, lessons_repository):
     def execute():
         courses = courses_repository.findAll()
 
-        return map(course_presentation, courses)
+        result = []
+
+        for course in courses:
+            lessons = lessons_repository.findAllByCourseId(course.id)
+            result.append({'course': course_presentation(course),
+                          'lessons': map(lesson_presentation, lessons)})
+
+        return result
 
     return execute
 
