@@ -31,11 +31,11 @@ def isCpfValid(string):
     def getFirstDigit(cpf_without_digits):
         multiplied_digits = []
 
-        for multiplier in range(10, 2):
+        for multiplier in range(10, 1, -1):
             index = (multiplier - 10) * -1
 
             multiplied_digits.append(
-                cpf_without_digits[index] * multiplier)
+                int(cpf_without_digits[index]) * multiplier)
 
         divider_rest = getSumOfMultiplied(multiplied=multiplied_digits) % 11
 
@@ -44,18 +44,17 @@ def isCpfValid(string):
     def getSecondDigit(cpf_without_last_digit):
         multiplied_digits = []
 
-        for multiplier in range(11, 2):
-            index = (multiplier - 10) * -1
+        for multiplier in range(11, 1, -1):
+            index = (multiplier - 11) * -1
 
             multiplied_digits.append(
-                cpf_without_last_digit[index] * multiplier)
+                int(cpf_without_last_digit[index]) * multiplier)
 
         divider_rest = getSumOfMultiplied(multiplied=multiplied_digits) % 11
 
         return getDigit(divider_rest)
 
     cpf_without_digits = string[0:9]
-
     first_digit = getFirstDigit(cpf_without_digits)
     second_digit = getSecondDigit(cpf_without_last_digit=string[0:10])
 

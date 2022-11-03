@@ -1,14 +1,14 @@
-REPOSITORY = []
+repository = []
 
 
 def create(data):
-    REPOSITORY.append(data)
+    repository.append(data)
 
 
 def findById(id):
     result = None
 
-    for student in REPOSITORY:
+    for student in repository:
         if (student.id == id):
             result = student
             break
@@ -19,7 +19,7 @@ def findById(id):
 def findByRa(ra):
     result = None
 
-    for student in REPOSITORY:
+    for student in repository:
         if (student.ra == ra):
             result = student
             break
@@ -30,7 +30,7 @@ def findByRa(ra):
 def findByCpf(cpf):
     result = None
 
-    for student in REPOSITORY:
+    for student in repository:
         if (student.cpf == cpf):
             result = student
             break
@@ -39,19 +39,21 @@ def findByCpf(cpf):
 
 
 def findAll():
-    return REPOSITORY
+    return repository
 
 
 def updateById(id, data):
-    student = None
+    global repository
 
-    for i in range(len(REPOSITORY)):
-        if (REPOSITORY[i].id == id):
-            student[i] = data
-            break
+    filtered = list(filter(lambda student: student.id != id, repository))
+    filtered.append(data)
+
+    repository = filtered
 
 
 def delById(id):
-    filtered = filter(lambda student: student.id != id, REPOSITORY)
+    global repository
 
-    REPOSITORY = filtered
+    filtered = filter(lambda student: student.id != id, repository)
+
+    repository = filtered

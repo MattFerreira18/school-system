@@ -25,7 +25,8 @@ def create(students_repository, courses_repository):
         if (not (course_exists)):
             return 'couse not found'
 
-        student = Student(name=name, cpf=cpf, course_id=course_id)
+        student = Student(id=None, name=name, cpf=cpf,
+                          ra=None, course_id=course_id)
 
         students_repository.create(student)
 
@@ -40,7 +41,7 @@ def find(students_repository):
         student = students_repository.findByRa(ra)
 
         if (not (student)):
-            return None
+            return 'student not found'
 
         return student_presentation(student)
 
@@ -85,7 +86,8 @@ def edit(students_repository, courses_repository):
         if (cpf_already_exists and cpf_already_exists.id != student.id):
             return 'cpf already registered'
 
-        student = Student(id=student.id, name=name, course_id=course_id)
+        student = Student(id=student.id, name=name,
+                          ra=student.ra, course_id=course_id)
 
         students_repository.updateById(id, student)
 

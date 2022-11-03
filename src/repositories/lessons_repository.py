@@ -1,14 +1,14 @@
-REPOSITORY = []
+repository = []
 
 
 def create(data):
-    REPOSITORY.append(data)
+    repository.append(data)
 
 
 def findById(id):
     result = None
 
-    for lesson in REPOSITORY:
+    for lesson in repository:
         if (lesson.id == id):
             result = lesson
             break
@@ -17,28 +17,30 @@ def findById(id):
 
 
 def findAll():
-    return REPOSITORY
+    return repository
 
 
 def updateById(id, data):
     lesson = None
 
-    for i in range(len(REPOSITORY)):
-        if (REPOSITORY[i].id == id):
+    for i in range(len(repository)):
+        if (repository[i].id == id):
             lesson[i] = data
             break
 
 
 def updateById(id, data):
-    lesson = None
+    global repository
 
-    for i in range(len(REPOSITORY)):
-        if (REPOSITORY[i].id == id):
-            lesson[i] = data
-            break
+    filtered = list(filter(lambda lesson: lesson.id != id, repository))
+    filtered.append(data)
+
+    repository = filtered
 
 
 def delById(id):
-    filtered = filter(lambda lesson: lesson.id != id, REPOSITORY)
+    global repository
 
-    REPOSITORY = filtered
+    filtered = filter(lambda lesson: lesson.id != id, repository)
+
+    repository = filtered
